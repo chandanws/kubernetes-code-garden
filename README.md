@@ -14,6 +14,8 @@ docker build -t francescou/thermostat:1.3 containers/thermostat/
 
 `$(minikube ip) myminikube.info >> /etc/hosts`
 
-open <http://myminikube.info/>
+open <http://myminikube.info/> you should see something like:
 
 ![screenshot](myhome.png)
+
+for more information see the ![slides](slides.pdf)
