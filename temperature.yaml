@@ -1,0 +1,33 @@
+# deprecated
+
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: temperature-deployment
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app:  temperature
+        editor: vscode
+        author: Francesco-Uliana
+    spec:
+      containers:
+      - name: temperature-container
+        image: francescou/temperature:1.1
+        ports:
+        - containerPort: 3000
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name:  temperature-svc
+spec:
+  selector:
+    app:  temperature
+  type:  NodePort
+  ports:
+  - name:  http
+    port:  8080
+    targetPort:  3000

@@ -1,0 +1,33 @@
+# deprecated
+
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: empty-deployment
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app:  empty
+        editor: vscode
+        author: Francesco-Uliana
+    spec:
+      containers:
+      - name: empty-container
+        image: nginx:alpine
+        ports:
+        - containerPort: 80
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name:  empty-svc
+spec:
+  selector:
+    app:  empty
+  type:  NodePort
+  ports:
+  - name:  http
+    port:  80
+    targetPort:  80

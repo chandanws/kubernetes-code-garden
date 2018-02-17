@@ -1,0 +1,33 @@
+# deprecated
+
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: humidity-deployment
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app:  humidity
+        editor: vscode
+        author: Francesco-Uliana
+    spec:
+      containers:
+      - name: humidity-container
+        image: francescou/humidity:1.0
+        ports:
+        - containerPort: 3000
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name:  humidity-svc
+spec:
+  selector:
+    app:  humidity
+  type:  NodePort
+  ports:
+  - name:  http
+    port:  8080
+    targetPort:  3000
